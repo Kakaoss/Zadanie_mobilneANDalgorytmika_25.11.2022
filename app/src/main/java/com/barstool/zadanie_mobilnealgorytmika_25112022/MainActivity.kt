@@ -33,27 +33,27 @@ class MainActivity : AppCompatActivity() {
 
     losuj.setOnClickListener {
         var i = 0
-        while (i < 9){
+        while (i < 8){
             przyciski[i].text = Random.nextInt(0,50).toString()
             i += 1
         }
     }
     sortuj.setOnClickListener {
             var x = 0
-            val liczby = mutableListOf<Int>()
-            while (x < 9){
+            val liczby:MutableList<Int> = mutableListOf()
+            while (x < 8){
                 if (przyciski[x].isChecked){
                     liczby.add(przyciski[x].text.toString().toInt())
                 }
             x += 1
             }
-        for (i in 0 until liczby.size-1){
-            if (liczby[i] > liczby[i+1]){
-                var pom = liczby[i]
-                liczby[i] = liczby[i+1]
-                liczby[i+1] = pom
+        for (j in 0 until liczby.size-1)
+            for (i in 0 until liczby.size-1)
+                if (liczby[i] > liczby[i+1]){
+                    val pom = liczby[i]
+                    liczby[i] = liczby[i+1]
+                    liczby[i+1] = pom
             }
-        }
         text.text = liczby.toString()
         }
     }
